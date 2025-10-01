@@ -29,18 +29,70 @@ Python code is generally almost-human readable but very slow. Numpy makes it fas
 There are two basic ways of using the model:
 
 #### Animated: 
-in agent based modelling, looking at the model working in real-time can be very important for analysis. That being said the model here is rather boring to observe (farms grow then stop growing), but having a look might still be helpful to get a feel about its inner workings. 
+In agent based modelling, looking at the model working in real-time can help in analysis. That being said the model here is rather boring to observe (farms grow then stop growing), but having a look might still be helpful to get a feel about its inner workings. 
 
-Animated models are used for presentation rather then analysis (altought the model outcome can be saved). In order to initialie a model, you have to use commands:
+Animated models are used for presentation rather then analysis (altought the model outcome can be saved). In order to initiate a model, you have to use command:
 
 > sim = Simulator_simple_git()
 
-This launches the main class of the model.
+And then launch a graphical simulation using:
 
 > sim.start_simulation()
 
-This launches the graphical simulation.
+In order to save the outcome, use:
 
+> sim.save_model_run()
+
+
+#### Headless:
+This allows to run scenarios with the same parameters many times, saving the outcome of the model. 
+
+In order to initiate a headless model, you have to use a function:
+
+> save_multi_sims()
+
+The model will be run and the final outcome saved automatically, with file name that encodes all the parameters of the model. 
+
+In order to load the saved outcomes as a numpy array, use function:
+
+> load_multiple()
+
+
+## Model and function parameters
+
+There are many variales that define the way model is run, they can be changed, when the animated or headless model is initialized.
+
+The variables are:
+
+### seed_population
+How many agents are created and take part in the model run. Default: 1000.
+
+### agent_speed
+How far does the agent travel when it cannot find a place free for farming. Agents travel by a random value in range -speed / + speed simulatenously on x and y axes. Unit is a percent of the model plane size. Default: 5.
+
+### plane_size
+How big, in arbitrary units is the square plane on which agents work. Default: 1000. 
+
+### agent_contact_range
+How far should one agent be from another in order to decide that it is not to close to farm. Unit is the model plane size. Default: 0.001.
+
+### contact_range_falloff
+If higher then zero agent_contact_range falls each time step by contact_range_falloff percent. Default: 0.
+
+### mean_merit
+The mean value of agents merit variable. The merit variable has a normal distribution based on this and next parameter. Default: 1.
+
+### merit_deviation
+Standard deviation of the merit variable. Default: 0.2.
+
+### model_type
+Takes values of 0 or 1. Determines what kind of capital accumulation takes place when agents work. Value of 0 means additive accumulation, each time step capital grows by merit parameter * 2. Value of 1 is expotential accumulation. Each time step the capital is multiplied by 1 + merit parameter divided by 100. Default: 1.
+
+### iterations_per_frame
+How many time steps are simulated each time the agents are updated. It should take small values for animation, where it defines how many time steps ahead each new frame jumps (Default: 1 when using sim.start_simulation() function). In headless mode it defines the limit of time steps for each simulation - and it should be large enough for all agents to reach the end state (Default: 25000 when using save_multi_sims() function).
+
+### wall_stop
+Should the walls stop the growth of the agents. 0 means no, 1 means yes. Default: 0. 
 
 
 
