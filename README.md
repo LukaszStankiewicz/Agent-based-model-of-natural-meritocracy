@@ -1,4 +1,4 @@
-\# Agent based model of natural meritocracy
+# Agent based model of natural meritocracy
 
 
 
