@@ -77,13 +77,13 @@ The variables are:
 How many agents are created and take part in the model run. Default: 1000.
 
 #### agent_speed
-How far does the agent travel when it cannot find a free place for farming. Agents travel by a random value in range -speed / + speed simulatenously on x and y axes. Unit is a percent of the model plane size. Default: 5.
+How far does the agent travel when it cannot find a free place for farming. Agents travel by a random value in range -speed / + speed simulatenously on x and y axes. Each point of speed moves an agent a percent of the model plane size. Default: 5.
 
 #### plane_size
 How big, in arbitrary units is the square plane on which agents work. Default: 1000. 
 
 #### agent_contact_range
-How far should one agent be from another in order to decide that it can start farming. Unit is the model plane size. Default: 0.001.
+How far should another agents be from the active agent for the farming to start. Unit is the model plane size. Default: 0.001.
 
 #### contact_range_falloff
 If higher then zero, agent_contact_range falls by contact_range_falloff percent during each time step. If the agents are too picky about their farming site, their expectations will fall each round until they can find a proper place. Default: 0.
@@ -99,19 +99,19 @@ Takes values of 0 or 1. Determines what kind of capital accumulation takes place
 
 Value of 0 means additive accumulation, wealth grows by merit parameter * 2 during each time step . 
 
-Value of 1 is expotential accumulation. The capital is multiplied by 1 + merit parameter divided by 100 during each time step. For example, the wealth of an agent with merit parameter of 1.2 will grow by 1.2% each round. 
+Value of 1 is expotential accumulation. The capital The capital grows by merit % each time step.
 
 Default: 1.
 
 #### iterations_per_frame
 How many time steps are simulated each time the agents are updated. 
 
-It should take small values for animation mode, where it defines how many time steps ahead each new frame jumps (Default: 1 when using sim.start_simulation() function). 
+It should take small values for animation mode, where it defines how many time steps ahead each new frame jumps (Default: 1 when using start_simulation() function). 
 
 In headless mode it defines the limit of time steps for each simulation - and it should be large enough for all the agents to reach the end state (Default: 25000 when using save_multi_sims() function).
 
 #### wall_stop
-Should the walls stop the growth of the agents. 0 means no, 1 means yes. Default: 0. 
+Should the walls stop the growth of the agents. 0 is no, 1 is yes. Default: 0. 
 
 
 When loading saved runs of the model, the array with data will be accompanied by a string of text describing the model parameters. For instance:
