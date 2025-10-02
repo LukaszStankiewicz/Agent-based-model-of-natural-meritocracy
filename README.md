@@ -28,7 +28,7 @@ There are two versions of the model:
 **Pure numpy**: needs only several simple libraries to work but is much slower.
 
 
-Python code is generally almost-human readable but very slow. Numpy makes it faster at the cost of readability. Numba brings its own difficulties as many native numpy and Python commands can prevent it from working, so the code can get rather awkward and incosistent (and very, very fast). 
+Python code is generally almost-human readable but very slow. Numpy makes it faster at the cost of readability. Numba brings its own difficulties as many native numpy and Python commands can prevent it from working, so the code can get rather awkward and incosistent (but it's very, very fast). 
 
 I provided lots of in-code comments and simple functions so the model is easy to use. 
 
@@ -51,7 +51,6 @@ In order to save the outcome, use:
 
 > sim.save_model_run()
 
-
 #### Headless:
 This allows to run scenarios with the same parameters many times, saving each outcome. 
 
@@ -59,7 +58,7 @@ In order to initiate a headless model, you have to use a function:
 
 > save_multi_sims(iterations=10)
 
-The model will be run number of times defined by the 'iteration' parameter and the final outcomes will be saved automatically, with file name that encodes all the parameters of the model. 
+The model will be run number of times defined by the 'iteration' argument and the final outcomes will be saved automatically, with file name that encodes all the parameters of the model. 
 
 In order to load the saved outcomes as a numpy array, use function:
 
