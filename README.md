@@ -1,6 +1,6 @@
 # Agent based model of natural meritocracy
 
-This is a model used in my paper: 
+This is a model used in my paper: https://zenodo.org/records/17290173
 
 This README is an outline of the model, more information can be found in the code comments and the paper. 
 
